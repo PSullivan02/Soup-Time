@@ -3,24 +3,25 @@ package souptime;
 import java.awt.*;
 import javax.swing.*;
 
-public class Player {
+public class Alien {
+    
     private int height, width, x, y, vx, vy, hp;
     Image img;
     private Rectangle bounds, bounds2, body;
-    private ImageIcon player;
-    public Player(int cWidth, int cHeight){
+    private ImageIcon alien;
+    public Alien(int cWidth, int cHeight){
         this.width = 50;
-        this.body = new Rectangle(x, y, width, height);
         this.vx = 0;
-        this.hp = 126;
+        this.body = new Rectangle(x, y, width, height);
+        this.hp = 50;
         this.vy = 0;
         this.x = 100;
         this.y = 100;
         this.height = 50;
-        this.player = new ImageIcon(getClass().getResource("MainChar.gif"));
-        this.img = player.getImage();
-        this.bounds = new Rectangle(this.x, this.y, 63, 5);
-        this.bounds2 = new Rectangle(this.x, this.y, this.hp / 2, 5);
+        this.alien = new ImageIcon(getClass().getResource("alien.png"));
+        this.img = alien.getImage();
+        this.bounds = new Rectangle(this.x, this.y, 50, 5);
+        this.bounds2 = new Rectangle(this.x, this.y, this.hp, 5);
     }
     public Rectangle getBounds(){
         return bounds;
@@ -39,27 +40,24 @@ public class Player {
         this.x += vx;
         this.y += vy;
         this.bounds = new Rectangle(this.x, this.y - 10, 50, 5);
-        this.bounds2 = new Rectangle(this.x, this.y - 10, this.hp / 2, 5);
+        this.bounds2 = new Rectangle(this.x, this.y - 10, this.hp, 5);
     }
     public void move(String direction){
         if(direction.equals("right")){
-            vx = 3;
+            vx = 2;
         }
         if(direction.equals("left")){
-            vx = -3;
+            vx = -2;
         }
         if(direction.equals("up")){
-            vy = -3;
+            vy = -2;
         }
         if(direction.equals("down")){
-            vy = 3;
+            vy = 2;
         }   
     }
     public Rectangle getBody(){
         return body;
-    }
-    public void loseHealth(){
-        this.hp = this.hp - 10;
     }
     public int getWidth(){
         return width;

@@ -51,10 +51,12 @@ public class World extends JPanel{
         if (p.getBody().intersects(a.getBody())){
             p.loseHealth();
         }
-        if(Rock.getBounds().intersects(a.getBody()))
+        //if(Rock.getBounds().intersects(a.getBody())){
+            
+        //}
     }
     public void enemyMovement(){
-        if(p.getWidth() - a.getX() < 0){
+        if((p.getX() + p.getWidth()) - a.getX() < 0){
             a.move("left");
         }
         if(p.getX() - a.getWidth() > 0){
